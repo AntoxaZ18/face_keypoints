@@ -1,0 +1,41 @@
+[project]
+name = "face-keypoints"
+version = "0.1.0"
+description = "68 face keypoints detection"
+authors = [
+    {name = "Anton",email = "antoxaz18@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+numpy = "<2"
+torch = { version = "^2.6", source = "torch118" }
+torchvision = { version = "*", source = "torch118" }
+ipykernel = "^6.29.5"
+albumentations = "^2.0.8"
+matplotlib = "^3.10.3"
+tqdm = "^4.67.1"
+scikit-learn = "^1.7.0"
+dvc = "^3.61.0"
+onnx = "^1.18.0"
+onnxscript = "^0.3.2"
+onnxoptimizer = "^0.3.13"
+onnx-simplifier = "^0.4.36"
+onnxruntime = "^1.22.1"
+pandas = "^2.3.1"
+
+
+[[tool.poetry.source]]
+name = "torch118"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "explicit"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

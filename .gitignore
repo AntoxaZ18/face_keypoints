@@ -1,0 +1,12 @@
+/.venv
+/checkpoints
+/logs
+/original
+/train
+/test
+__pycache__
+/.dvc
+*.pth
+*.onnx
+test.dvc
+train.dvc
