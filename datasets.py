@@ -48,29 +48,6 @@ class FaceKeyPointDataset(Dataset):
         else:
             return img, face_landmarks
 
-# Трансформации для train
-train_transform = A.Compose([
-    A.Resize(256, 256),
-    A.HorizontalFlip(p=0.5),
-    A.RandomBrightnessContrast(p=0.3),
-    # A.Rotate(limit=10, p=0.3),
-    # A.Affine(
-    #     translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)},  # Сдвиг
-    #     scale=(0.8, 1.2),  # Масштабирование
-    #     rotate=(-10, 10),  # Поворот
-    #     p=0.3
-    # ),
-    A.GaussianBlur(blur_limit=(3, 7), p=0.1),
-    A.HueSaturationValue(p=0.3),
-    A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    ToTensorV2()
-], keypoint_params=A.KeypointParams(format='xy'))
-
-# Трансформации для val
-val_transform = A.Compose([
-    A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    ToTensorV2()
-], keypoint_params=A.KeypointParams(format='xy'))
 
 
 def show_image_with_landmarks(image, landmarks, title="Image with Landmarks"):
@@ -131,28 +108,4 @@ def train_test_split(original_path, train_path, test_path, original_json:str, te
 
 
 if __name__ == "__main__":
-
-    dataset = FaceKeyPointDataset("./train/images", "./train/data.json")
-
-
-    image, points = dataset[0]
-
-    print(points)
-
-    # # for i in dataset:
-    # #     assert i[1].shape == (68, 2)
-
-    # data_loader = DataLoader(dataset, batch_size=16, num_workers=0)
-
-
-    # for idx, (images, landmarks) in enumerate(data_loader):
-    #     print(idx, landmarks.shape)
-
-    # image, keypoints = dataset[3305]
-
-    # print(keypoints)
-
-    # show_image_with_landmarks(image, keypoints)
-
-
-    # train_test_split("original", "./train", "./test", "./original/all_data.json", 0.2)
+    train_test_split("original", "./train", "./test", "./original/all_data.json", 0.2)
