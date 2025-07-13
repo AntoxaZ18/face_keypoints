@@ -59,6 +59,6 @@
 --onnx  путь куда будут сохранены экспортированные в ONNX модели
 
 ```Powershell
-python export_to_onnx.py --models ./ablation --onnx ./onnx_models
+python export_to_onnx.py --model best_model.pth --onnx mobilenet_relu.onnx
 ```
 
